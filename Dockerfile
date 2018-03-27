@@ -54,8 +54,6 @@ RUN set -ex \
 # Install memcached
 # =====
 
-RUN apk add --no-cache $PHPIZE_DEPS \
-	&& pecl install pcre-dev
 
 RUN docker-php-ext-install opcache
 
