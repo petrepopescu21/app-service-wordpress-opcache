@@ -54,11 +54,11 @@ RUN set -ex \
 # Configure Opcache
 # =====
 
-RUN sudo apt-get install dpkg
+RUN apt-get install dpkg
 RUN wget https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_amd64.deb 
 RUN dpkg --unpack mod-pagespeed-stable_current_amd64.deb
-RUN sudo dpkg -i mod-pagespeed-*.deb
-RUN sudo apt-get -f install
+RUN dpkg -i mod-pagespeed-*.deb
+RUN apt-get -f install
 
 RUN apt-get -y install memcached
 
