@@ -51,7 +51,7 @@ RUN set -ex \
     && test -e /usr/local/bin/entrypoint.sh && mv /usr/local/bin/entrypoint.sh /usr/local/bin/entrypoint.bak
 
 # =====
-# Install memcached
+# Configure Opcache
 # =====
 
 RUN { \
@@ -61,6 +61,7 @@ RUN { \
         echo 'opcache.revalidate_freq=60'; \
         echo 'opcache.fast_shutdown=1'; \
         echo 'opcache.enable_file_override=1'; \
+		echo 'opcache.save_comments=0';
     } > /usr/local/php/etc/conf.d/php-opcache-custom.ini
 
 # =====
