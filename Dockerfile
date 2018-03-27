@@ -55,7 +55,7 @@ RUN set -ex \
 # =====
 
 RUN wget https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_amd64.deb 
-RUN dpkg -i mod-pagespeed-stable_current_amd64.deb
+RUN dpkg --unpack mod-pagespeed-stable_current_amd64.deb
 RUN sudo dpkg -i mod-pagespeed-*.deb
 RUN sudo apt-get -f install
 
