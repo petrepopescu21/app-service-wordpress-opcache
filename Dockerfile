@@ -61,7 +61,7 @@ RUN { \
         echo 'opcache.revalidate_freq=60'; \
         echo 'opcache.fast_shutdown=1'; \
         echo 'opcache.enable_file_override=1'; \
-    } > /usr/local/php/etc/conf.d/php-opcache.ini
+    } > /usr/local/php/etc/conf.d/php-opcache-custom.ini
 
 # =====
 # final
