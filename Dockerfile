@@ -54,19 +54,9 @@ RUN set -ex \
 # Install memcached
 # =====
 
-
-RUN docker-php-ext-install opcache
-
-RUN echo "zend_extension=$(find /usr/local/php/lib/php/extensions/ -name opcache.so)" > /usr/local/php/etc/conf.d/opcache.ini
-
 RUN { \
-        echo 'opcache.memory_consumption=128'; \
-        echo 'opcache.interned_strings_buffer=8'; \
-        echo 'opcache.max_accelerated_files=4000'; \
-        echo 'opcache.revalidate_freq=60'; \
-        echo 'opcache.fast_shutdown=1'; \
-        echo 'opcache.enable_cli=1'; \
-    } > /usr/local/php/etc/conf.d/opcache.ini
+        echo 'opcache.enable_file_override=1'; \
+    } > /usr/local/php/etc/conf.d/php-opcache.ini
 
 # =====
 # final
