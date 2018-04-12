@@ -25,12 +25,17 @@ ENV DOCKER_BUILD_HOME "/dockerbuild"
 # 2. wordpress
 # ====================
 
+ENV VARNISH_BACKEND_ADDRESS 127.0.0.1
+ENV VARNISH_BACKEND_PORT 3000
+ENV VARNISH_MEMORY 250M
+
+
 WORKDIR $DOCKER_BUILD_HOME
 RUN set -ex \
 	# --------
 	# 1. redis
 	# --------
-        && apk add --update redis \
+        && apk add --update redis varnish \
 	# ------------	
 	# 2. wordpress
 	# ------------
@@ -41,11 +46,8 @@ RUN set -ex \
 	# ----------
 	&& rm -rf /var/cache/apk/* 
 
-ENV VARNISH_BACKEND_ADDRESS 127.0.0.1
-ENV VARNISH_BACKEND_PORT 3000
-ENV VARNISH_MEMORY 250M
 
-RUN apk add varnish
+
 
 # =========
 # Configure
