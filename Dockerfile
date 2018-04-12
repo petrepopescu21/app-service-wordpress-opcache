@@ -65,13 +65,6 @@ RUN set -ex \
 # Configure Opcache
 # =====
 
-RUN apk add dpkg
-RUN wget https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_amd64.deb 
-RUN dpkg --unpack mod-pagespeed-stable_current_amd64.deb
-RUN dpkg -i mod-pagespeed-*.deb
-
-RUN apk add memcached
-
 RUN { \
 		echo 'opcache.memory_consumption=128'; \
         echo 'opcache.interned_strings_buffer=8'; \
