@@ -2,7 +2,10 @@
 # Dockerfile for WordPress
 #
 FROM appsvcorg/alpine-php-mysql:0.1 
-MAINTAINER Azure App Service Container Images <appsvc-images@microsoft.com>
+MAINTAINER Petre Popescu <petre.popescu@microsoft.com>
+
+ENV HTTPD_CONF_DIR "$HTTPD_HOME/conf"
+COPY httpd.conf $HTTPD_CONF_DIR/
 
 # ========
 # ENV vars
@@ -37,6 +40,12 @@ RUN set -ex \
 	# ~. clean up
 	# ----------
 	&& rm -rf /var/cache/apk/* 
+
+ENV VARNISH_BACKEND_ADDRESS 127.0.0.1
+ENV VARNISH_BACKEND_PORT 3000
+ENV VARNISH_MEMORY 250M
+
+RUN apk add varnish
 
 # =========
 # Configure

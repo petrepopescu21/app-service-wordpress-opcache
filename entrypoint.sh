@@ -165,5 +165,9 @@ rm -rf $WORDPRESS_SOURCE
 echo "Starting SSH ..."
 rc-service sshd start
 
+echo "Starting Varnish ..."
+mkdir -p /var/lib/varnish/localhost && chown nobody /var/lib/varnish/localhost
+varnishd -s malloc,${VARNISH_MEMORY} -a :80 -b ${VARNISH_BACKEND_ADDRESS}:${VARNISH_BACKEND_PORT}
+
 echo "Starting Apache httpd -D FOREGROUND ..."
 apachectl start -D FOREGROUND
