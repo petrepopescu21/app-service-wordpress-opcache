@@ -4,9 +4,6 @@
 FROM appsvcorg/alpine-php-mysql:0.1 
 MAINTAINER Petre Popescu <petre.popescu@microsoft.com>
 
-ENV HTTPD_CONF_DIR "$HTTPD_HOME/conf"
-COPY httpd.conf $HTTPD_CONF_DIR/
-
 # ========
 # ENV vars
 # ========
@@ -83,5 +80,5 @@ COPY wp-config.php $WORDPRESS_SOURCE/
 
 COPY entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh
-EXPOSE 2222 80
+EXPOSE 2222 3000
 ENTRYPOINT ["entrypoint.sh"]
